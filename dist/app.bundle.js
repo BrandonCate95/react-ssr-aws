@@ -28430,7 +28430,7 @@ var Layout = function (_React$Component) {
                 null,
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(
                     "h1",
-                    null,
+                    { className: "title" },
                     this.state.title
                 ),
                 react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null),

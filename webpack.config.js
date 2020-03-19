@@ -2,9 +2,14 @@ const dev = process.env.NODE_ENV !== "production";
 const path = require( "path" );
 const { BundleAnalyzerPlugin } = require( "webpack-bundle-analyzer" );
 const FriendlyErrorsWebpackPlugin = require( "friendly-errors-webpack-plugin" );
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const plugins = [
     new FriendlyErrorsWebpackPlugin(),
+    new ExtractTextPlugin({
+        filename: '[name].css',
+        allChunks: true
+    })
 ];
 
 if ( !dev ) {
@@ -35,6 +40,20 @@ module.exports = {
                 exclude: /(node_modules|bower_components)/,
                 loader: "babel-loader",
             },
+            {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract({
+                  loader: [
+                    {
+                      loader: 'css-loader',
+                      query: {
+                        localIdentName: '[hash:8]',
+                        modules: true
+                      }
+                    }
+                  ]
+                })
+            }
         ],
     },
     output: {

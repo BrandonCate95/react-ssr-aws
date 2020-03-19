@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Header from "./Header";
 import routes from "../routes";
+//import './Layout.css'
 
 class Layout extends React.Component {
     constructor() {
@@ -14,7 +15,7 @@ class Layout extends React.Component {
     render() {
         return (
             <div>
-                <h1>{ this.state.title }</h1>
+                <h1 className="title">{ this.state.title }</h1>
                 <Header />
                 <Switch>
                     { routes.map( route => <Route key={ route.path } { ...route } /> ) }
